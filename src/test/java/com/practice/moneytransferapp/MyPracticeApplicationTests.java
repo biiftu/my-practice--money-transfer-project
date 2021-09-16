@@ -8,6 +8,9 @@ class MyPracticeApplicationTests {
 
     @Test
     void contextLoads() {
+        String name = "Abebe";
+        assert name == "Abebe";
+
     }
 
 }

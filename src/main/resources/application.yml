@@ -5,12 +5,18 @@ spring:
         url: jdbc:postgresql://localhost:5432/moneytransferdb
         username: firalammii
         password: f1r4lam311
-        initialization-mode: always
-##kmdf
+    ##kmdf
 
-    jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
-    jpa.show-sql : true
-    jpa.hibernate.ddl-auto : update
-    jpa.properties.hibernate.dialect : org.hibernate.dialect.PostgreSQLDialect
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        show-sql : true
+        hibernate.ddl-auto : update
+        properties:
+            hibernate:
+                dialect : org.hibernate.dialect.PostgreSQLDialect
+        open-in-view: off
+    sql:
+        init:
+            mode: always
 
 
