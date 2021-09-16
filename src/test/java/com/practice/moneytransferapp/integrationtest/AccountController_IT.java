@@ -13,8 +13,11 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.web.servlet.function.RequestPredicates.contentType;
+import static org.springframework.web.servlet.function.RequestPredicates.*;
+import static org.springframework.web.servlet.function.ServerResponse.noContent;
+import static org.springframework.web.servlet.function.RequestPredicate.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -34,7 +37,7 @@ public class AccountController_IT {
                 "  \"first_name\": \"Abeba\",\n" +
                 "  \"middle_name\": \"Dessalegn\",\n" +
                 "  \"last_name\": \"AbreshZget\",\n" +
-                "  \"phone_number\": \"0933445566\",\n" +
+                "  \"phone_number\": \"0935445566\",\n" +
                 "  \"birth_date\": \"2000-01-01\",\n" +
                 "  \"pin\": 1234,\n" +
                 "  \"email\": \"abebadess@gmail.com\"\n" +
@@ -47,14 +50,7 @@ public class AccountController_IT {
         )
                 .andDo(print())
                 .andExpect(status().isOk());
-//                .andExpect(content().json("{\n" +
-//                                "  \"first_name\": \"Abeba\",\n" +
-//                                "  \"middle_name\": \"Dessalegn\",\n" +
-//                                "  \"last_name\": \"AbreshZget\",\n" +
-//                                "  \"phone_number\": \"0933445566\",\n" +
-//                                "  \"pin\": 1234,\n" +
-//                                "  \"email\": \"abebadess@gmail.com\"\n" +
-//                                "}"))
+//                .andExpect(content().json())
      //           .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
 
     }
@@ -66,8 +62,8 @@ public class AccountController_IT {
                 "  \"first_name\": \"Abeba\",\n" +
                 "  \"middle_name\": \"Dessalegn\",\n" +
                 "  \"last_name\": \"AbreshZget\",\n" +
-                "  \"phone_number\": \"0933445566\",\n" +
-                "  \"birth_date\": \"2015-01-01\",\n" +
+                "  \"phone_number\": \"0924568662\",\n" +
+                "  \"birth_date\": \"2002-01-01\",\n" +
                 "  \"pin\": 1234,\n" +
                 "  \"email\": \"abebadess@gmail.com\"\n" +
                 "}";
@@ -79,7 +75,7 @@ public class AccountController_IT {
         )
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) contentType(MediaType.APPLICATION_JSON));
-                //.andExpect(content().json())
+                .andExpect(content().contentType("application/json"));
+               // .andExpect(content().json());
     }
 }

@@ -25,7 +25,7 @@ public class AccountService {
         }
         else {
             //do sth
-            return null;
+           return null;
         }
 
     }
@@ -33,6 +33,7 @@ public class AccountService {
     public Iterable allAccounts(){
         return accountRepository.findAll();
     }
+
     private static int calculateAge(LocalDate birthdate, LocalDate currentdate){
         if(birthdate != null && currentdate != null){
             return Period.between(birthdate, currentdate).getYears();

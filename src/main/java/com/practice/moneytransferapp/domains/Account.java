@@ -45,7 +45,7 @@ public class Account {
     @Column(nullable=false, unique = true)
     private String phone_number;
 
-    @NotBlank(message="phone number cannot be blank")
+    //@NotBlank(message="birth date cannot be blank")
     @Column(nullable=false)
     private LocalDate birth_date;
 
@@ -56,4 +56,5 @@ public class Account {
     private Boolean isVerified = Boolean.TRUE;
     
     private Double balance = 0.0;
+
 }
