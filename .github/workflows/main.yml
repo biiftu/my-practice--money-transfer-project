@@ -3,34 +3,35 @@ name: CI/CD pipeline
 on:
   push:
     branches: -master
-  jobs:
-    build:
-      runs-on: ubuntu latest
 
-      steps:
-        - uses: actions/checkout@v2
-        - name: Set up JDK 11
-          uses: actions/Setup-java@v2
-          with:
-            java-version: '11'
-            distribution: 'adopt'
-            cache: maven
+jobs:
+  build:
+    runs-on: ubuntu latest
 
-        - name: Build with maven
-          run: mvn --batch-mode --update-snapshoot verify
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/Setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Build with maven
+        run: mvn --batch-mode --update-snapshoot verify
 
 
-    #deploy:
-     # needs: build
-      #runs-on: ubuntu latest
+  #deploy:
+   # needs: build
+    #runs-on: ubuntu latest
 
-      #- uses: action/checkout@v2
-      #- uses: akhileshins/heroku-deploy@v3.12.12
-      #  with:
-      #    heroku_api_key: ${{HEROKU_API_KEY}}
-      #    heroku_app_name: "money-transfer-app-by-firomsa"
-      #    heroku_email: "firalammydewano@gmail.com"
-      #    healthcheck: "https://money-transfer-app-by-firomsa.herokuapp.com/actuator/health"
+    #- uses: action/checkout@v2
+    #- uses: akhileshins/heroku-deploy@v3.12.12
+    #  with:
+    #    heroku_api_key: ${{HEROKU_API_KEY}}
+    #    heroku_app_name: "money-transfer-app-by-firomsa"
+    #    heroku_email: "firalammydewano@gmail.com"
+    #    healthcheck: "https://money-transfer-app-by-firomsa.herokuapp.com/actuator/health"
 
 
 
