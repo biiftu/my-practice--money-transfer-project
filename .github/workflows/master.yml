@@ -20,13 +20,15 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    - uses: action/checkout@v2
-    - uses: akhileshns/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "money-transfer-app-by-firomsa"
-        heroku_email: "firalammydewano@gmail.com"
-        healthcheck: "https://money-transfer-app-by-firomsa.herokuapp.com/actuator/health"
+      steps:
+        - uses: action/checkout@v2
+        - uses: akhileshns/heroku-deploy@v3.12.12
+          with:
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            heroku_app_name: "money-transfer-app-by-firomsa"
+            heroku_email: "firalammydewano@gmail.com"
+            healthcheck: "https://money-transfer-app-by-firomsa.herokuapp.com/actuator/health"
+
 
 
 
