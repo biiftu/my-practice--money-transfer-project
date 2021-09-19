@@ -20,20 +20,20 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-          with:
-            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-            # Now go to your Heroku account and go to Account Settings. Scroll to the bottom until you see API Key. Copy this key and go to your project's repository on GitHub.
-            # In your Repo, go to Settings -> Secrets and click on "New Secret". Then enter HEROKU_API_KEY as the name and paste the copied API Key as the value.
-            # You can now push your project to GitHub and it will be automatically deployed to Heroku henceforth.
-            heroku_app_name: "money-transfer-web-app-by-firomsafiralammii0088" #Must be unique in Heroku
-            heroku_email: "firomsadewano@gmail.com"
-            healthcheck: "https://money-transfer-api-actse.herokuapp.com/actuator/health"
-            # Adding the url to the `healthcheck` option of the action will make the action attempt
-            # to perform a GET Request to that url and print the response if successful.
-            # Else it will fail the action to indicate that the deployment was not successful.
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          # Now go to your Heroku account and go to Account Settings. Scroll to the bottom until you see API Key. Copy this key and go to your project's repository on GitHub.
+          # In your Repo, go to Settings -> Secrets and click on "New Secret". Then enter HEROKU_API_KEY as the name and paste the copied API Key as the value.
+          # You can now push your project to GitHub and it will be automatically deployed to Heroku henceforth.
+          heroku_app_name: "money-transfer-web-app-by-firomsafiralammii0088" #Must be unique in Heroku
+          heroku_email: "firomsadewano@gmail.com"
+          healthcheck: "https://money-transfer-api-actse.herokuapp.com/actuator/health"
+          # Adding the url to the `healthcheck` option of the action will make the action attempt
+          # to perform a GET Request to that url and print the response if successful.
+          # Else it will fail the action to indicate that the deployment was not successful.
 
 
 
