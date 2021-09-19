@@ -1,4 +1,4 @@
-name: CI/CD pipeline2
+name: CI/CD pipeline
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
@@ -16,22 +15,18 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: maven
-
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshoots verify
-
-
-  #deploy:
-   # needs: build
-    #runs-on: ubuntu-latest
-
-    #- uses: action/checkout@v2
-    #- uses: akhileshins/heroku-deploy@v3.12.12
-    #  with:
-    #    heroku_api_key: ${{HEROKU_API_KEY}}
-    #    heroku_app_name: "money-transfer-app-by-firomsa"
-    #    heroku_email: "firalammydewano@gmail.com"
-    #    healthcheck: "https://money-transfer-app-by-firomsa.herokuapp.com/actuator/health"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    - uses: action/checkout@v2
+    - uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "money-transfer-app-by-firomsa"
+        heroku_email: "firalammydewano@gmail.com"
+        healthcheck: "https://money-transfer-app-by-firomsa.herokuapp.com/actuator/health"
 
 
 
